@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>Add Category</h1>
+
+<br>
+<div class="field">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br><button class="button is-link is-rounded is-outlined">Add Category</button>
+    </form>
+</div>
+{% else %}
+
+You're not allowed here! 
+Please Signup or Login!
+
+{% endif %}
+
+{% endblock %}
