@@ -18,8 +18,10 @@
 {{ post.body }}
 
 <br/><br>
+{% if user.is_authenticated %}
 <small><a href="{% url 'update_post' post.pk %}">Edit Post</a></small><br>
 <small><a href="{% url 'delete_post' post.pk %}">Delete Post</a></small><br>
+{% endif %}
 <a href="{% url 'home' %}">Go Back</a>
 
 {% endblock %}

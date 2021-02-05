@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 
 <h1>Update Post</h1>
 
@@ -13,6 +14,11 @@
         <br><button class="button is-link is-rounded is-outlined">Post</button>
     </form>
 </div>
+{% else %}
 
+You're not allowed here! 
+Please Signup or Login!
+
+{% endif %}
 
 {% endblock %}

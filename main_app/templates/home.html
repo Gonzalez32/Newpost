@@ -7,14 +7,13 @@
   <li>
     <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a>
     - {{ post.author }} - {{ post.post_date }}
-    <!-- Might leave out time on Home Page -->
-    <!-- {{ post.post_time }} -->
-    <small><a href="{% url 'update_post' post.pk %}">Edit</a></small>
-    <small><a href="{% url 'delete_post' post.pk %}">Delete</a></small
+      {% if user.is_authenticated %}
+        <a href="{% url 'update_post' post.pk %}">Edit</a>
+        <a href="{% url 'delete_post' post.pk %}">Delete</a>
+      {% endif %}
     ><br />
-    {{ post.body }}
+    {{ post.body|slice:":100" }}
   </li>
-
   {% endfor %}
 </ul>
 
