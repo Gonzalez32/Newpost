@@ -5,7 +5,12 @@
 
 <h1>Add Post</h1>
 
-
+<br>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Post</button>
+</form>
 
 
 {% endblock %}
