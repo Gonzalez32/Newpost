@@ -15,6 +15,7 @@
 
 <br/><br>
 <small><a href="{% url 'update_post' post.pk %}">Edit Post</a></small><br>
+<small><a href="{% url 'delete_post' post.pk %}">Delete Post</a></small><br>
 <a href="{% url 'home' %}">Go Back</a>
 
 {% endblock %}
