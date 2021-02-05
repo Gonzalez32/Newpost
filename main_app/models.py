@@ -13,3 +13,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title + ' | ' + str(self.author)
+
+    def get_absolute_url(self):
+        return reverse('article-detail', args=(str(self.id)))
+        # we can render create post to index page below
+        #return reverse('home')
