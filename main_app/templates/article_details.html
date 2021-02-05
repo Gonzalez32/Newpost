@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1>Post Details</h1>
+<br>
 <h1>{{ post.title }}</h1>
 
 <small>
@@ -12,6 +14,7 @@
 {{ post.body }}
 
 <br/><br>
+<small><a href="{% url 'update_post' post.pk %}">Edit Post</a></small><br>
 <a href="{% url 'home' %}">Go Back</a>
 
 {% endblock %}
