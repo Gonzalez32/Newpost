@@ -1,7 +1,17 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from .models import Post
 
-from django.http import HttpResponse
+
 
 # Create your views here.
-def home(request):
-    return HttpResponse('<h1>home page!</h1>')
+# def home(request):
+    # return render(request, 'home.html', {})
+
+class HomeView(ListView):
+    model = Post
+    template_name = 'home.html'
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'article_details.html'
