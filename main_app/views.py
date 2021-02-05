@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Post
-from .forms import PostForm
+from .forms import PostForm, EditPostForm
 
 
 class HomeView(ListView):
@@ -20,5 +20,6 @@ class AddPostView(CreateView):
 
 class UpdatePostView(UpdateView):
     model = Post
+    form_class = EditPostForm
     template_name = 'update_post.html'
-    fields = ['title', 'body']
+    # fields = ['title', 'body']
