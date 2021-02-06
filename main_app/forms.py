@@ -16,7 +16,9 @@ class PostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}),
-            'author': forms.Select(attrs={'class': 'select is-warning'}),
+            # 'author': forms.Select(attrs={'disabled':'disabled'}),
+            'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
+            # 'author': forms.Select(attrs={'class': 'select is-warning'}),
             'category': forms.Select(choices=choices_list, attrs={'class': 'select is-warning'}),
             'body': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
         }

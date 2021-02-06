@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import datetime, date, time
-from django.contrib.auth.models import User
 
 
 
@@ -28,6 +28,6 @@ class Post(models.Model):
         return self.title + ' | ' + str(self.author)
 
     def get_absolute_url(self):
-        return reverse('article-detail', args=(str(self.id)))
+        # return reverse('article-detail', args=(str(self.id)))
         # we can render create post to index page below
-        #return reverse('home')
+        return reverse('home')

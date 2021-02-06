@@ -12,8 +12,12 @@
         {% csrf_token %}
         {{ form.as_p }}
         <br><button class="button is-link is-rounded is-outlined">Post</button>
-    </form>
+    
 </div>
+<script>
+    var name = '{{ user.id }}';
+    document.getElementById('elder').value = name;
+</script>
 {% else %}
 
 You're not allowed here! 
