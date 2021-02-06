@@ -40,23 +40,15 @@
       
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
-                More
+                Categories
               </a>
       
               <div class="navbar-dropdown">
-                <a class="navbar-item">
-                  About
+                {% for item in cat_menu %}
+                <a class="navbar-item" href="{% url 'category' item|slugify %}">
+                  {{ item }}
                 </a>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
+                {% endfor %}
               </div>
             </div>
           </div>
