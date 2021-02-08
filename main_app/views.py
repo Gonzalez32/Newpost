@@ -15,6 +15,7 @@ def LikeView(request, pk):
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
+    cats = Category.objects.all()
     # ordering = ['-id']
     ordering = ['-post_date']
 
@@ -36,10 +37,14 @@ def CategoryView(request, cats):
 class ArticleDetailView(DetailView):
     model = Post
     template_name = 'article_details.html'
+    
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()
         context = super(ArticleDetailView, self).get_context_data(*args, **kwargs)
+        item = get_object_or_404(Post, id=self.kwargs['pk'])
+        total_likes = item.total_likes()
         context["cat_menu"] = cat_menu
+        context["total_likes"] = total_likes
         return context
 
 class AddPostView(CreateView):

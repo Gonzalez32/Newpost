@@ -32,7 +32,7 @@
     <form action="{% url 'like_post' post.pk %}"
     method="POST">
         {% csrf_token %}
-        <button type="submit", name="post_id", value="{{ post.id }}", class="">Like 👍 </button>
+        <button type="submit", name="post_id", value="{{ post.id }}", class="">Like 👍 </button> - {{ total_likes }} Likes
     </form>
 
 {% endblock %}
