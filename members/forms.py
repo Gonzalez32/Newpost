@@ -21,6 +21,7 @@ class SignUpForm(UserCreationForm):
 
 
 
+
 class EditProfileForm(UserChangeForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'input'}))
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'input'}))
