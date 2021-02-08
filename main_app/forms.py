@@ -12,7 +12,7 @@ for item in choices:
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'author', 'category', 'body')
+        fields = ('title', 'author', 'category', 'body', 'snippet')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}),
@@ -21,16 +21,20 @@ class PostForm(forms.ModelForm):
             # 'author': forms.Select(attrs={'class': 'select is-warning'}),
             'category': forms.Select(choices=choices_list, attrs={'class': 'select is-warning'}),
             'body': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
+            'snippet': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
+
         }
 
 
 class EditPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title', 'body')
+        fields = ('title', 'body', 'snippet')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}),
             # 'author': forms.Select(attrs={'class': 'select is-warning'}),
             'body': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
+            'snippet': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
+
         }

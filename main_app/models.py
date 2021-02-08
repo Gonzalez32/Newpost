@@ -25,6 +25,7 @@ class Post(models.Model):
     post_date = models.DateField(auto_now_add=True)
     post_time = models.TimeField(auto_now_add=True)
     category = models.CharField(max_length=255, default='coding')
+    snippet = models.CharField(max_length=255)
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
 
