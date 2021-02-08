@@ -36,3 +36,13 @@ class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password', 'is_superuser', 'is_staff', 'is_active')
+
+
+class SignUpForm(UserCreationForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'input'}))
+    first_name = forms.CharField(max_length=100, widget=forms.EmailInput(attrs={'class': 'input'}))
+    last_name = forms.CharField(max_length=100, widget=forms.EmailInput(attrs={'class': 'input'}))
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
