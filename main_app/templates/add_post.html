@@ -4,20 +4,21 @@
 
 {% if user.is_authenticated %}
 
-<h1>Add Post</h1>
+    <h1>Add Post</h1>
 
-<br>
-<div class="field">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br><button class="button is-link is-rounded is-outlined">Post</button>
-    
-</div>
-<script>
-    var name = '{{ user.id }}';
-    document.getElementById('elder').value = name;
-</script>
+    <br>
+    <div class="field">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <br><button class="button is-link is-rounded is-outlined">Post</button>
+        
+    </div>
+    <script>
+        var name = '{{ user.id }}';
+        document.getElementById('elder').value = name;
+    </script>
 {% else %}
 
 You're not allowed here! 

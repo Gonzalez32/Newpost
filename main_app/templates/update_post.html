@@ -11,6 +11,7 @@
         <div class="field">
             <form method="POST">
                 {% csrf_token %}
+                {{ form.media }}
                 {{ form.as_p }}
                 <br><button class="button is-success is-rounded is-outlined">Update Post</button>
             </form>
