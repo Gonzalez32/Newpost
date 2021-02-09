@@ -51,6 +51,48 @@
         </small>
     {% endif %}
             - {{ total_likes }} Likes
-    </form>
+    </form><br><br>
+
+    <hr>
+    <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+                {% if post.author.profile.profile_pic %}
+                    <figure class="image is-128x128">
+                        <img class="is-rounded" src="{{ post.author.profile.profile_pic.url }}" alt="Placeholder image">
+                    </figure>
+                {% endif %}
+            </div>
+            <div class="media-content">
+              <p class="title is-4">{{ post.author.first_name }} {{ post.author.last_name }}</p>
+              <p class="subtitle is-6">{{ post.author.email }}</p>
+                <small>
+                    {% if post.author.profile.website_url %}
+                        | <a href="{{ post.author.profile.website_url }}">website</a>
+                    {% endif %}
+    
+                    {% if post.author.profile.facebook_url %}
+                        | <a href="{{ post.author.profile.facebook_url }}">Facebook</a>
+                    {% endif %}
+    
+                    {% if post.author.profile.twitter_url %}
+                        | <a href="{{ post.author.profile.twitter_url }}">Twitter</a>
+                    {% endif %}
+    
+                    {% if post.author.profile.linkedin_url %}
+                        | <a href="{{ post.author.profile.linkedin_url }}">Linkedin</a>
+                    {% endif %}
+                </small>
+            </div>
+          </div>
+      
+          <div class="content">
+            Bio: {{ post.author.profile.bio }}
+            <br>
+            <time datetime="">Date Joined: {{ post.author.date_joined }}</time>
+          </div>
+        </div>
+      </div>
 
 {% endblock %}
