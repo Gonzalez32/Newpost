@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+ 
 {% block content %}
 
     <h1>Post Details</h1>
@@ -61,6 +62,10 @@
                 {% if post.author.profile.profile_pic %}
                     <figure class="image is-128x128">
                         <img class="is-rounded" src="{{ post.author.profile.profile_pic.url }}" alt="Placeholder image">
+                    </figure>
+                {% else %}
+                    <figure class="image is-128x128">
+                        <img class="is-rounded" src="{% static 'theblog/images/Profile-PNG-Icon.png' %}" alt="Placeholder image">
                     </figure>
                 {% endif %}
             </div>
