@@ -70,7 +70,7 @@
                 {% endif %}
             </div>
             <div class="media-content">
-              <p class="title is-4">{{ post.author.first_name }} {{ post.author.last_name }}</p>
+              <p class="title is-4"><a href="{% url 'show_profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></p>
               <p class="subtitle is-6">{{ post.author.email }}</p>
                 <small>
                     {% if post.author.profile.website_url %}
@@ -98,6 +98,6 @@
             <time datetime="">Date Joined: {{ post.author.date_joined }}</time>
           </div>
         </div>
-      </div>
+    </div>
 
 {% endblock %}
