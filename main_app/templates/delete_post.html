@@ -6,17 +6,20 @@
         {% if user.id == post.author.id %}
             <h1 class="title is-1">Delete Post</h1>
             <hr>
-
-            <div class="container is-widescreen">
-                <div class="notification is-warning">
-                    <h3 class="title is-3">Delete: {{ post.title }}</h3>
-                    <br>
-                    <div class="field">
-                        <form method="POST">
-                            {% csrf_token %}
-                            <strong>Are you sure?</strong><br>
-                            <br><button class="button is-danger is-rounded is-outlined">Delete Post</button>
-                        </form>
+            <div class="container is-fluid">
+                <div class="notification is-dark">
+                    <div class="container is-widescreen">
+                        <div class="notification is-warning">
+                            <h3 class="title is-3">Delete: {{ post.title }}</h3>
+                            <br>
+                            <div class="field">
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <strong>Are you sure?</strong><br>
+                                    <br><button class="button is-danger is-rounded is-outlined">Delete Post</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

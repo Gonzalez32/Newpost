@@ -5,16 +5,19 @@
 
     <h1 class="title is-1">Edit Settings</h1>
     <hr>
-
-    <div class="container is-widescreen">
-        <div class="notification is-warning">
-            <div class="field">
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <br><br><button class="button is-link is-rounded is-outlined">Update Settings</button>
-                </form>
-            </div>
+    <div class="container is-fluid">
+        <div class="notification is-dark">
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <div class="field">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br><br><button class="button is-link is-rounded is-outlined">Update Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>         
         </div>
     </div>
 

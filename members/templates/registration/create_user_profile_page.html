@@ -4,15 +4,22 @@
 
 {% if user.is_authenticated %}
 
-    <h1>Create Profile Page</h1>
-
-    <br>
-    <div class="field">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <br><button class="button is-link is-rounded is-outlined">Create Profile</button>
-        
+    <h1 class="title is-1">Create Profile Page</h1>
+    <hr>
+    <div class="container is-fluid">
+        <div class="notification is-dark">
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <div class="field">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br><button class="button is-link is-rounded is-outlined">Create Profile</button>
+                        </form>    
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
 {% else %}

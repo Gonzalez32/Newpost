@@ -6,14 +6,18 @@
 
     <h1 class="title is-1">Add Comment</h1>
     <hr>
-    <div class="container is-widescreen">
-        <div class="notification is-warning">
-            <div class="field">
-                <form method="POST">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <br><button class="button is-success is-rounded is-outlined">Add Comment</button>
-                </form>
+    <div class="container is-fluid">
+        <div class="notification is-dark">
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <div class="field">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br><button class="button is-success is-rounded is-outlined">Add Comment</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

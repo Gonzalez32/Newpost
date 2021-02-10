@@ -2,27 +2,31 @@
 
 <h1 class="title is-1">Posts</h1>
 <hr>
-<div class="container is-widescreen">
-  <div class="notification is-warning">
-    <!-- <div class="box"> -->
-      {% for post in object_list %}
-      <li>
-        <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - 
-          <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a> 
-        - {{ post.author }} - {{ post.post_date }}
-          {% if user.is_authenticated %}
-            {% if user.id == post.author.id %} - 
-              <a href="{% url 'update_post' post.pk %}">Edit</a> |
-              <a href="{% url 'delete_post' post.pk %}">Delete</a>
-            {% endif %}
-          {% endif %}
-        <br />
-        {{ post.snippet }}
-        <hr>
-        <!-- {{ post.body|slice:":100" |safe }} -->
-      </li>
-      {% endfor %}
-    <!-- </div> -->
+<div class="container is-fluid">
+  <div class="notification is-dark">
+    <div class="container is-widescreen">
+      <div class="notification is-warning">
+        <!-- <div class="box"> -->
+          {% for post in object_list %}
+          <li>
+            <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - 
+              <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a> 
+            - {{ post.author }} - {{ post.post_date }}
+              {% if user.is_authenticated %}
+                {% if user.id == post.author.id %} - 
+                  <a href="{% url 'update_post' post.pk %}">Edit</a> |
+                  <a href="{% url 'delete_post' post.pk %}">Delete</a>
+                {% endif %}
+              {% endif %}
+            <br />
+            {{ post.snippet }}
+            <hr>
+            <!-- {{ post.body|slice:":100" |safe }} -->
+          </li>
+          {% endfor %}
+        <!-- </div> -->
+      </div>
+    </div>
   </div>
 </div>
 
