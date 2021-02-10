@@ -2,12 +2,17 @@
 
 {% block content %}
 
-<h1>Post Categories</h1><br>
+    <h1 class="title is-1">Post Categories</h1>
+    <br>
 
-    {% for item in cat_menu_list %}
-        <a class="navbar-item" href="{% url 'category' item|slugify %}">
-            {{ item }}
-        </a>
-    {% endfor %}
+    <div class="container is-widescreen">
+        <div class="notification is-warning">
+            {% for item in cat_menu_list %}
+                <a class="navbar-item" href="{% url 'category' item|slugify %}">
+                    {{ item }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

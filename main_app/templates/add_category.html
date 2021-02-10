@@ -4,20 +4,23 @@
 
 {% if user.is_authenticated %}
 
-<h1>Add Category</h1>
+    <h1 class="title is-1">Add Category</h1>
+    <br>
 
-<br>
-<div class="field">
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <br><button class="button is-link is-rounded is-outlined">Add Category</button>
-    </form>
-</div>
-{% else %}
-
-You're not allowed here! 
-Please Signup or Login!
+    <div class="container is-widescreen">
+        <div class="notification is-warning">
+            <div class="field">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <br><button class="button is-link is-rounded is-outlined">Add Category</button>
+                </form>
+            </div>
+            {% else %}
+            You're not allowed here! 
+            Please Signup or Login!
+        </div>
+    </div>
 
 {% endif %}
 
