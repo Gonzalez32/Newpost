@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- {% if user.is_authenticated %} -->
+
+    <h1>Add Comment</h1>
+
+    <br>
+    <div class="field">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br><button class="button is-success is-rounded is-outlined">Add Comment</button>
+        
+    </div>
+
+<!-- {% else %}
+
+You're not allowed here! 
+Please Signup or Login!
+
+{% endif %} -->
+
+{% endblock %}

@@ -54,6 +54,7 @@
             - {{ total_likes }} Likes
     </form><br><br> -->
 
+    <hr>
     <div class="tile is-ancestor">
         <div class="tile is-vertical is-8">
           <div class="tile">
@@ -191,21 +192,22 @@
               <hr>
               <!-- <p class="subtitle">With even more content</p> -->
               <div class="content">
-                {% if not post.comments.all %}
-                    No Comments Yet? <a href="#">Add One</a>
-                {% else %}
-                    {% for comment in post.comments.all %}
-                        <strong>
-                            {{ comment.name }}
-                        </strong>
-                            {{ comment.date_added }}
-                        <br>
-                        
-                        {{ comment.body }}
-                        <hr>
+                  {% if not post.comments.all %}
+                  No Comments Yet? <a href="{% url 'add_comment' post.pk %}">Add One</a>
+                  {% else %}
+                  {% for comment in post.comments.all %}
+                  <strong>
+                      {{ comment.name }}
+                    </strong>
+                    {{ comment.date_added }}
+                    <br>
+                    
+                    {{ comment.body }}
+                    <hr>
                     {% endfor %}
-                {% endif %}
-
+                    <a href="{% url 'add_comment' post.pk %}">Add Comment</a>
+                    {% endif %}
+                    
                 <!-- Content -->
               </div>
             </div>
