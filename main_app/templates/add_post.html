@@ -4,26 +4,29 @@
 
 {% if user.is_authenticated %}
 
-    <h1>Add Post</h1>
-
+    <h1 class="title is-1">Add Post</h1>
     <br>
-    <div class="field">
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.media }}
-            {{ form.as_p }}
-            <br><button class="button is-link is-rounded is-outlined">Post</button>
+    <div class="container is-widescreen">
+        <div class="notification is-warning">
+            <div class="field">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <br><button class="button is-link is-rounded is-outlined">Post</button>
+                
+            </div>
+            <script>
+                var name = '{{ user.id }}';
+                document.getElementById('elder').value = name;
+            </script>
+        {% else %}
         
+        You're not allowed here! 
+        Please Signup or Login!
+        
+        {% endif %}
+        </div>
     </div>
-    <script>
-        var name = '{{ user.id }}';
-        document.getElementById('elder').value = name;
-    </script>
-{% else %}
-
-You're not allowed here! 
-Please Signup or Login!
-
-{% endif %}
 
 {% endblock %}

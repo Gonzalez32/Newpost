@@ -42,42 +42,38 @@
               Category List
             </a>
             
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-      
-              <div class="navbar-dropdown">
-                {% if user.profile.id %}
-                <a class="navbar-item" href="{% url 'edit_profile_page' user.profile.id %}">
-                  Update Profile Page
-                </a>
-                <a class="navbar-item" href="{% url 'show_profile_page' user.profile.id %}">
-                  Profile Page
-                </a>
-                {% else %}
-                <a class="navbar-item" href="{% url 'create_profile_page' %}">
-                  Create Profile Page
-                </a>  
-                {% endif %}
-                <a class="navbar-item" href="{% url 'edit_profile' %}">
-                  Edit Settings
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
-              </div>
-            </div>
+            
               </div>
             </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-danger is-outlined is-rounded" href="{% url 'logout' %}">
-                  Logout
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  {{ user.first_name }}
+                  {{ user.last_name }}
                 </a>
+                <div class="navbar-dropdown is-right">
+                  {% if user.profile.id %}
+                  <a class="navbar-item" href="{% url 'edit_profile_page' user.profile.id %}">
+                    Update Profile Page
+                  </a>
+                  <a class="navbar-item" href="{% url 'show_profile_page' user.profile.id %}">
+                    Profile Page
+                  </a>
+                  {% else %}
+                  <a class="navbar-item" href="{% url 'create_profile_page' %}">
+                    Create Profile Page
+                  </a>  
+                  {% endif %}
+                  <a class="navbar-item" href="{% url 'edit_profile' %}">
+                    Edit Settings
+                  </a>
+                  <hr class="navbar-divider">
+                  <a class="navbar-item" href="{% url 'logout' %}">
+                    Logout
+                  </a>
+                </div>
               </div>
             </div>
           </div>

@@ -15,14 +15,11 @@ class PostForm(forms.ModelForm):
         fields = ('title', 'author', 'category', 'body', 'snippet', 'header_image')
 
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}),
-            # 'author': forms.Select(attrs={'disabled':'disabled'}),
+            'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}), 
             'author': forms.TextInput(attrs={'class': 'form-control', 'value':'', 'id':'elder', 'type':'hidden'}),
-            # 'author': forms.Select(attrs={'class': 'select is-warning'}),
             'category': forms.Select(choices=choices_list, attrs={'class': 'select is-warning'}),
             'body': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
-            'snippet': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
-
+            'snippet': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Snippet...'}),
         }
 
 
@@ -33,10 +30,8 @@ class EditPostForm(forms.ModelForm):
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'input is-warning', 'placeholder': 'Enter Title...'}),
-            # 'author': forms.Select(attrs={'class': 'select is-warning'}),
             'body': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
             'snippet': forms.Textarea(attrs={'class': 'textarea is-warning', 'placeholder': 'Enter Post...'}),
-
         }
 
 
