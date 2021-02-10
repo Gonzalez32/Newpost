@@ -3,7 +3,7 @@
  
 {% block content %}
 
-    <h1>Post Details</h1>
+    <!-- <h1>Post Details</h1>
     <br>
     <h1>{{ post.title }}</h1>
 
@@ -52,10 +52,170 @@
         </small>
     {% endif %}
             - {{ total_likes }} Likes
-    </form><br><br>
+    </form><br><br> -->
+
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-warning">
+                    <!-- <h1>Post Details</h1> -->
+                    <p class="title">Post Details</p>
+                    <p class="subtitle">{{ post.title }}</p>
+                    <small>
+                        By: 
+                        {{ post.author.first_name }} 
+                        {{ post.author.last_name }} - 
+                        {{ post.post_date }}
+                        {{ post.post_time}}
+                    </small><br>
+                    <hr>
+                    <br/>
+                    {% if post.header_image %}
+                        <img src="{{ post.header_image.url }}" alt="">
+                    {% endif %}    
+                    <br>
+                    {{ post.body|safe }}
+                    <hr>
+                    {% if user.is_authenticated %}
+                        {% if user.id == post.author.id %}
+                            <small><a href="{% url 'update_post' post.pk %}">Edit Post</a>  |  <a href="{% url 'delete_post' post.pk %}">Delete Post</a></small><br>
+                            <!-- <small><a href="{% url 'delete_post' post.pk %}">Delete Post</a></small><br> -->
+                        {% endif %}
+                    {% endif %}
+                    <br>
+                    <form action="{% url 'like_post' post.pk %}"
+                    method="POST">
+                        {% csrf_token %}
+
+                    {% if user.is_authenticated %}
+                        {% if liked %}
+                            <button type="submit", name="post_id", value="{{ post.id }}", class="">Unlike 👎 </button>
+                        {% else %}
+                            <button type="submit", name="post_id", value="{{ post.id }}", class="">Like 👍 </button>
+                        {% endif %}
+                    {% else %}
+                        <small>
+                            <a class="button is-success is-outlined is-rounded" href="{% url 'login' %}">
+                                Login to like!
+                            </a>
+                        </small>
+                    {% endif %}
+                            - {{ total_likes }} Likes
+                    </form><br>
+                    <br/><br>
+                    <!-- <a href="{% url 'home' %}">Go Back</a> -->
+                </article>
+            </div>
+            <!-- <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Vertical...</p>
+                <p class="subtitle">Top tile</p>
+              </article>
+              <article class="tile is-child notification is-warning">
+                <p class="title">...tiles</p>
+                <p class="subtitle">Bottom tile</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">Middle tile</p>
+                <p class="subtitle">With an image</p>
+                <!-- <figure class="image is-4by3">
+                  <img src="https://bulma.io/images/placeholders/640x480.png">
+                </figure> -->
+                
+              <!-- </article>
+            </div> -->
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-warning">
+                <p class="title"><a href="{% url 'show_profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></p>
+                <p class="subtitle is-6">{{ post.author.email }}</p>
+              <!-- <p class="title">Wide tile</p>
+              <p class="subtitle">Aligned with the right tile</p> -->
+              <div class="content">
+                <!-- Content -->
+                <div class="card">
+                    <div class="card-content">
+                      <div class="media">
+                        <div class="media-left">
+                            {% if post.author.profile.profile_pic %}
+                                <figure class="image is-128x128">
+                                    <img class="is-rounded" src="{{ post.author.profile.profile_pic.url }}" alt="Placeholder image">
+                                </figure>
+                            {% else %}
+                                <figure class="image is-128x128">
+                                    <img class="is-rounded" src="{% static 'theblog/images/Profile-PNG-Icon.png' %}" alt="Placeholder image">
+                                </figure>
+                            {% endif %}
+                        </div>
+                        <div class="media-content">
+                          <!-- <p class="title is-4"><a href="{% url 'show_profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></p>
+                          <p class="subtitle is-6">{{ post.author.email }}</p> -->
+                            <small>
+                                {% if post.author.profile.website_url %}
+                                    | <a href="{{ post.author.profile.website_url }}">website</a>
+                                {% endif %}
+                
+                                {% if post.author.profile.facebook_url %}
+                                    | <a href="{{ post.author.profile.facebook_url }}">Facebook</a>
+                                {% endif %}
+                
+                                {% if post.author.profile.twitter_url %}
+                                    | <a href="{{ post.author.profile.twitter_url }}">Twitter</a>
+                                {% endif %}
+                
+                                {% if post.author.profile.linkedin_url %}
+                                    | <a href="{{ post.author.profile.linkedin_url }}">Linkedin</a>
+                                {% endif %}
+                            </small>
+                        </div>
+                      </div>
+                  
+                      <div class="content">
+                        Bio: {{ post.author.profile.bio }}
+                        <br>
+                        <time datetime="">Date Joined: {{ post.author.date_joined }}</time>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-info">
+            <div class="content">
+              <p class="title">Comments</p>
+              <hr>
+              <!-- <p class="subtitle">With even more content</p> -->
+              <div class="content">
+                {% if not post.comments.all %}
+                    No Comments Yet? <a href="#">Add One</a>
+                {% else %}
+                    {% for comment in post.comments.all %}
+                        <strong>
+                            {{ comment.name }}
+                        </strong>
+                            {{ comment.date_added }}
+                        <br>
+                        
+                        {{ comment.body }}
+                        <hr>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Content -->
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
 
     <hr>
-    <div class="card">
+    
+    <!-- <div class="card">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -98,6 +258,6 @@
             <time datetime="">Date Joined: {{ post.author.date_joined }}</time>
           </div>
         </div>
-    </div>
+    </div> -->
 
 {% endblock %}
