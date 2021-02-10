@@ -64,24 +64,14 @@ class AddPostView(CreateView):
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
-    # fields = '__all__'
-    # def get_context_data(self, *args, **kwargs):
-    #     cat_menu = Category.objects.all()
-    #     context = super(AddPostView, self).get_context_data(*args, **kwargs)
-    #     context["cat_menu"] = cat_menu
-    #     return context
     
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     return super(AddPostView, self).form_valid(form)
 
 
 class AddCommentView(CreateView):
     model = Comment
     form_class = CommentForm
     template_name = 'add_comment.html'
-    # fields = '__all__'
-    success_url = reverse_lazy('article-detail')
+    success_url = reverse_lazy('home')
     
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
