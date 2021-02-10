@@ -6,7 +6,6 @@
   <div class="notification is-dark">
     <div class="container is-widescreen">
       <div class="notification is-warning">
-        <!-- <div class="box"> -->
           {% for post in object_list %}
           <li>
             <a href="{% url 'article-detail' post.pk %}">{{ post.title }}</a> - 
@@ -24,7 +23,6 @@
             <!-- {{ post.body|slice:":100" |safe }} -->
           </li>
           {% endfor %}
-        <!-- </div> -->
       </div>
     </div>
   </div>
