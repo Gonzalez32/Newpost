@@ -2,28 +2,31 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-    {% if user.id == post.author.id %}
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
 
-        <h1>Update Post</h1>
-
-        <br>
-        <div class="field">
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                <br><button class="button is-success is-rounded is-outlined">Update Post</button>
-            </form>
-        </div>
+            <h1 class="title is-1">Update Post</h1>
+            <br>
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <div class="field">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.media }}
+                            {{ form.as_p }}
+                            <br><button class="button is-info is-rounded is-outlined">Update Post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            You're not allowed here!
+        {% endif %}
     {% else %}
-        You're not allowed here!
+
+    You're not allowed here! 
+    Please Signup or Login!
+
     {% endif %}
-{% else %}
-
-You're not allowed here! 
-Please Signup or Login!
-
-{% endif %}
 
 {% endblock %}

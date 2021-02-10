@@ -2,28 +2,32 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-    {% if user.id == post.author.id %}
-        <h1>Delete Post</h1>
-        <br>
-        <h3>Delete: {{ post.title }}</h3>
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <h1 class="title is-1">Delete Post</h1>
+            <br>
 
-        <br>
-        <div class="field">
-            <form method="POST">
-                {% csrf_token %}
-                <strong>Are you sure?</strong><br>
-                <br><button class="button is-danger is-rounded is-outlined">Delete Post</button>
-            </form>
-        </div>
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <h3 class="title is-3">Delete: {{ post.title }}</h3>
+                    <br>
+                    <div class="field">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <strong>Are you sure?</strong><br>
+                            <br><button class="button is-danger is-rounded is-outlined">Delete Post</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            You're not allowed here!
+        {% endif %}
     {% else %}
-        You're not allowed here!
+
+    You're not allowed here! 
+    Please Signup or Login!
+
     {% endif %}
-{% else %}
-
-You're not allowed here! 
-Please Signup or Login!
-
-{% endif %}
 
 {% endblock %}
