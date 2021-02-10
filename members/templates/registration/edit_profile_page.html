@@ -2,28 +2,32 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-    {% if user.id == profile.user.id %}
-        <h1>Edit User Profile</h1>
+    {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %}
+            <h1 class="title is-1">Edit User Profile</h1>
+            <hr>
 
-        <br>
-        <div class="field">
-            <form method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <br><button class="button is-link is-rounded is-outlined">Update Profile</button>
-            
-        </div>
-    
+            <div class="container is-widescreen">
+                <div class="notification is-warning">
+                    <div class="field">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <br><button class="button is-link is-rounded is-outlined">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        
+        {% else %}
+
+        You must be the correct USER to Edit Profile
+        
+        {% endif %}
+        
     {% else %}
-
-    You must be the correct USER to Edit Profile
-    
+        You're not allowed here! 
+        Please Signup or Login!
     {% endif %}
-    
-{% else %}
-    You're not allowed here! 
-    Please Signup or Login!
-{% endif %}
 
 {% endblock %}
