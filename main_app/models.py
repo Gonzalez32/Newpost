@@ -8,7 +8,6 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Category(models.Model):
-    # user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -41,7 +40,6 @@ class Post(models.Model):
     header_image = models.ImageField(null=True, blank=True, upload_to='images/')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = RichTextField(blank=True, null=True)
-    # body = models.TextField()
     post_date = models.DateField(auto_now_add=True)
     post_time = models.TimeField(auto_now_add=True)
     category = models.CharField(max_length=255, default='coding')
