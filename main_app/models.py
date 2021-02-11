@@ -7,8 +7,15 @@ from ckeditor.fields import RichTextField
 
 
 # Create your models here.
+class Category(models.Model):
+    name = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.name
 
+    def get_absolute_url(self):
+        return reverse('home')
+        
 
 class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
@@ -61,13 +68,3 @@ class Comment(models.Model):
     def __str__(self):
         return '%s - %s' % (self.post.title, self.name)
 
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('home')
