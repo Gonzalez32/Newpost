@@ -20,7 +20,7 @@ User Profile Page
 * CSS
 * BULMA
 * Google/services
-### ![NewPost:](https://newpostpost.herokuapp.com/)
+### [NewPost:](https://newpostpost.herokuapp.com/)
 User must Signup and Login to create Post and like a Post. Any User can comment on any Post that's created. User can setup Profile and edit profile once it's created. User can change Password in settings and Update their Links on their Profile ex( Website, FaceBook, Twitter, etc... ) Posts can be Updated and Delete only by the User that created that Post!
 ### IceBox:
 * Create comments only by users
