@@ -63,11 +63,11 @@ class Comment(models.Model):
 
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=255)
+# class Category(models.Model):
+#     name = models.CharField(max_length=255)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
 
-    def get_absolute_url(self):
-        return reverse('home')
+#     def get_absolute_url(self):
+#         return reverse('home')
