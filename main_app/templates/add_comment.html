@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<!-- {% if user.is_authenticated %} -->
+{% if user.is_authenticated %}
 
     <h1 class="title is-1">Add Comment</h1>
     <hr>
@@ -21,12 +21,12 @@
             </div>
         </div>
     </div>
+    
 
-<!-- {% else %}
+{% else %}
 
-You're not allowed here! 
-Please Signup or Login!
+<h1 class="title is-1">Please Signup or Login!</h1>
 
-{% endif %} -->
+{% endif %}
 
 {% endblock %}

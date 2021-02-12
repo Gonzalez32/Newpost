@@ -64,6 +64,7 @@
                   </div>
                   <div class="tile is-parent">
                     <article class="tile is-child notification is-warning">
+                        {% if post.author.profile.id %}
                         <p class="title"><a href="{% url 'show_profile_page' post.author.profile.id %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></p>
                         <p class="subtitle is-6">{{ post.author.email }}</p>
                       <div class="content">
@@ -111,6 +112,9 @@
                             </div>
                         </div>
                       </div>
+                      {% else %}
+                        <h3 class="title is-3">Waiting For User To Create Profile...</h3>
+                      {% endif %}
                     </article>
                   </div>
                 </div>
@@ -122,10 +126,10 @@
                       <!-- <p class="subtitle">With even more content</p> -->
                       <div class="content">
                           {% if not post.comments.all %}
-                          No Comments Yet? <a href="{% url 'add_comment' post.pk %}">Add One</a>
+                            No Comments Yet? <a href="{% url 'add_comment' post.pk %}">Add One</a>
                           {% else %}
                           {% for comment in post.comments.all %}
-                          <strong>
+                            <strong>
                               {{ comment.name }}
                             </strong>
                             {{ comment.date_added }}

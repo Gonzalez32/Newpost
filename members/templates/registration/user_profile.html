@@ -11,46 +11,46 @@
                 <div class="notification is-warning">
                     <div class="card">
                         <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                {% if page_user.profile_pic %}
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="{{ page_user.profile_pic.url }}" alt="Placeholder image">
-                                    </figure>
-                                {% else %}
-                                    <figure class="image is-128x128">
-                                        <img class="is-rounded" src="{% static 'theblog/images/Profile-PNG-Icon.png' %}" alt="Placeholder image">
-                                    </figure>
-                                {% endif %}
+                            <div class="media">
+                                <div class="media-left">
+                                    {% if page_user.profile_pic %}
+                                        <figure class="image is-128x128">
+                                            <img class="is-rounded" src="{{ page_user.profile_pic.url }}" alt="Placeholder image">
+                                        </figure>
+                                    {% else %}
+                                        <figure class="image is-128x128">
+                                            <img class="is-rounded" src="{% static 'theblog/images/Profile-PNG-Icon.png' %}" alt="Placeholder image">
+                                        </figure>
+                                    {% endif %}
+                                </div>
+                                <div class="media-content">
+                                <p class="title is-4"><a href="{% url 'show_profile_page' page_user.id %}">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</a></p>
+                                <p class="subtitle is-6">{{ page_user.user.email }}</p>
+                                    <small>
+                                        {% if page_user.website_url %}
+                                            | <a href="{{ page_user.website_url }}">website</a>
+                                        {% endif %}
+                        
+                                        {% if page_user.facebook_url %}
+                                            | <a href="{{ page_user.facebook_url }}">Facebook</a>
+                                        {% endif %}
+                        
+                                        {% if page_user.twitter_url %}
+                                            | <a href="{{ page_user.twitter_url }}">Twitter</a>
+                                        {% endif %}
+                        
+                                        {% if page_user.linkedin_url %}
+                                            | <a href="{{ page_user.linkedin_url }}">Linkedin</a>
+                                        {% endif %}
+                                    </small>
+                                </div>
                             </div>
-                            <div class="media-content">
-                            <p class="title is-4"><a href="{% url 'show_profile_page' page_user.id %}">{{ page_user.user.first_name }} {{ page_user.user.last_name }}</a></p>
-                            <p class="subtitle is-6">{{ page_user.user.email }}</p>
-                                <small>
-                                    {% if page_user.website_url %}
-                                        | <a href="{{ page_user.website_url }}">website</a>
-                                    {% endif %}
                     
-                                    {% if page_user.facebook_url %}
-                                        | <a href="{{ page_user.facebook_url }}">Facebook</a>
-                                    {% endif %}
-                    
-                                    {% if page_user.twitter_url %}
-                                        | <a href="{{ page_user.twitter_url }}">Twitter</a>
-                                    {% endif %}
-                    
-                                    {% if page_user.linkedin_url %}
-                                        | <a href="{{ page_user.linkedin_url }}">Linkedin</a>
-                                    {% endif %}
-                                </small>
+                            <div class="content">
+                                Bio: {{ page_user.bio }}
+                                <br>
+                                <time datetime="">Date Joined: {{ page_user.user.date_joined }}</time>
                             </div>
-                        </div>
-                    
-                        <div class="content">
-                            Bio: {{ page_user.bio }}
-                            <br>
-                            <time datetime="">Date Joined: {{ page_user.user.date_joined }}</time>
-                        </div>
                         </div>
                     </div>
                 </div>
