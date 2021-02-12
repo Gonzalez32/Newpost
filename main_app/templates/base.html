@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NewPost</title>
+    <title>Newpost</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   </head>
   <body>
@@ -26,11 +26,11 @@
           <div class="navbar-start">
 
             <a class="navbar-item" href="{% url 'home' %}">
-              Home
+              <strong>Home</strong>
             </a>
       
             <a class="navbar-item" href="{% url 'add_post' %}">
-              Add Post
+              <strong>Add Post</strong>
             </a>
 
             <!-- <a class="navbar-item" href="{% url 'add_category' %}">
@@ -38,7 +38,7 @@
             </a> -->
             
             <a class="navbar-item" href="{% url 'category-list' %}">
-              Category List
+              <strong>Category List</strong>
             </a>
             
             
@@ -49,8 +49,7 @@
             <div class="navbar-item">
               <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
-                  {{ user.first_name }}
-                  {{ user.last_name }}
+                  <strong>{{ user.first_name }} {{ user.last_name }}</strong>
                 </a>
                 <div class="navbar-dropdown is-right">
                   {% if user.profile.id %}
@@ -70,7 +69,7 @@
                   </a>
                   <hr class="navbar-divider">
                   <a class="navbar-item" href="{% url 'logout' %}">
-                    Logout
+                    <strong>Logout</strong>
                   </a>
                 </div>
               </div>
@@ -88,7 +87,7 @@
                 <strong>Sign up</strong>
               </a>
               <a class="button is-success is-outlined is-rounded" href="{% url 'login' %}">
-                Login
+                <strong>Login</strong>
               </a>
               
               {% endif %}
