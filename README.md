@@ -31,5 +31,8 @@ User must Signup and Login to create Post and like a Post. Any User can comment 
 * [BULMA](https://bulma.io/)
 * [Trello](https://trello.com/b/hrH9YQC1/passnote)
 * [Django](https://docs.djangoproject.com/en/3.1/)
+### Notes:
+UPDATE!
+I plan to keep working over the course just fixing some bugs and adding more into the project.
 
 
