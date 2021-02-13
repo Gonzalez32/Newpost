@@ -50,8 +50,8 @@
                                 {% endif %}
                             {% else %}
                                 <small>
-                                    <a class="button is-success is-outlined is-rounded" href="{% url 'login' %}">
-                                        Login to like!
+                                    <a class="button is-success is-outlined is-rounded is-small" href="{% url 'login' %}">
+                                        Login!
                                     </a>
                                 </small>
                             {% endif %}
@@ -113,7 +113,7 @@
                         </div>
                       </div>
                       {% else %}
-                        <h3 class="title is-3">Waiting For User To Create Profile...</h3>
+                        <h3 class="title is-3">Waiting For {{ post.author.first_name }} {{ post.author.last_name }} To Create Profile.</h3>
                       {% endif %}
                     </article>
                   </div>
