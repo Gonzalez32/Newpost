@@ -24,9 +24,18 @@
                             </small><br>
                             <hr>
                             <br/>
-                            {% if post.header_image %}
+                            <!-- {% if post.header_image %}
                                 <img src="{{ post.header_image.url }}" alt="">
-                            {% endif %}    
+                            {% endif %}     -->
+                            {% for photo in post.photo_set.all %}
+                              <img src="{{photo.url}}">
+                            {% endfor %}
+                            <!-- <form action="{% url 'add_photo' post.id %}" enctype="multipart/form-data" method="POST" class="">
+                              {% csrf_token %}
+                              <input type="file" name="photo-file">
+                              <br><br>
+                              <input type="submit" class="" value="Upload Photo">
+                            </form>   -->
                             <br>
                             {{ post.body|safe }}
                             <hr>
